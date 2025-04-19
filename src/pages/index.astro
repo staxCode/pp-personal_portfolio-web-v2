@@ -5,13 +5,7 @@ import Card from '../components/Card.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import Label from '../components/Label.astro'
 import SkillLayout from '../components/SkillLayout.astro'
-// import PostPreview from '@/components/blog/PostPreview.astro'
 import Profile from '@/components/Profile.astro'
-
-// import { 
-// 	getAllPosts, 
-// 	sortMDByDate 
-// } from '@/utils'
 import TypingEffect from '@/components/TypingEffect.astro'
 
 import imgProfile from '@/assets/profile.png'
@@ -20,10 +14,6 @@ const languages = ['lorem', 'ipsum']
 const frontend = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
 const backend = ['lorem', 'ipsum', 'lorem', 'ipsum']
 const others = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
-
-// const MAX_POSTS = 10
-// const allPosts = await getAllPosts()
-// const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
@@ -84,43 +74,35 @@ const others = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
 			</div>
 		</section>
 
-		<Section title='About'>
+		<Section title='Sobre mí'>
 			<p class='text-muted-foreground'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque quia omnis
-				consectetur, voluptas praesentium veniam blanditiis ratione asperiores accusantium laborum
-				odit commodi quis deserunt incidunt et dolor iure ut! Lorem ipsum dolor sit, amet
-				consectetur adipisicing elit. Alias quia, doloribus ut beatae perspiciatis voluptatibus.
+				Desarrollador Full Stack con más de 3 años de experiencia, especializado en crear soluciones
+				escalables y robustas que optimizan operaciones y facilitan decisiones estratégicas.
+				Apasionado por transformar desafíos en resultados funcionales y sostenibles.
 			</p>
 		</Section>
-		<!-- {
-			allPostsByDate.length > 0 && (
-				<Section title='Posts'>
-					<ul class='flex flex-col gap-y-2'>
-						{allPostsByDate.map((p) => (
-							<li class='flex flex-col gap-x-2 sm:flex-row'>
-								<PostPreview post={p} />
-							</li>
-						))}
-					</ul>
-				</Section>
-			)
-		} -->
 
-		<Section title='Experience'>
+		<Section title='Experiencia'>
 			<Card
-				heading='Lorem Ipsum'
-				subheading='Sit amet consectetur'
-				date='Dec 2022 - Nov 2023'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='ACOMO Negocios Financieros SAC'
+				subheading='Desarrollador Junior en Fintech'
+				date='Marzo 2023 - Noviembre 2023'
+				imagePath=''
+				altText='Experiencia laboral'
 				imageClass='h-12 w-auto md:-left-16'
 			>
 				<ul class='ml-4 list-disc text-muted-foreground'>
 					<li>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-						molestiae laboriosam pariatur!
-
-						<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
+						Desarrollé soluciones tecnológicas para el ecosistema financiero, cubriendo todo el
+						ciclo de vida del software.
+					</li>
+					<li>
+						Implementé funcionalidades críticas en backend con Node.js, Express.js y MongoDB,
+						optimizando procesos para más de 100 usuarios.
+					</li>
+					<li>
+						Construí APIs RESTful escalables, automatizando procesos clave y reduciendo un 35% el
+						tiempo de procesamiento.
 					</li>
 				</ul>
 			</Card>

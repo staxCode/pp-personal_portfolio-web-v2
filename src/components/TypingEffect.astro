@@ -1,0 +1,82 @@
+---
+const { description } = Astro.props
+---
+
+<div class='flex flex-col items-center'>
+	<div class='intro-container'>
+		<h1 class='text-2xl'>
+			{description}
+			<span class='ml-1 font-bold'>
+				<span id='animated-word'></span><span class='caret'>|</span>
+			</span>
+		</h1>
+	</div>
+</div>
+
+<script>
+	const words = [
+		{ text: 'Frontend', color: '#7B68EE' }, // Amarillo
+		{ text: 'Backend', color: '#FF4500' }, // Verde
+		{ text: 'Fullstack', color: '#DC143C' }, // Rosa
+		{ text: 'IoT', color: '#FF8C00' } // Naranja oscuro
+	]
+
+	let wordIndex = 0
+	let charIndex = 0
+	let isDeleting = false
+
+	const wordEl = document.getElementById('animated-word')
+	const typingSpeed = 100
+	const pauseBetweenWords = 1500
+
+	function type() {
+		const currentWord = words[wordIndex]
+
+		if (isDeleting) {
+			charIndex--
+			if (wordEl) {
+				wordEl.textContent = currentWord.text.substring(0, charIndex)
+			}
+			if (charIndex === 0) {
+				isDeleting = false
+				wordIndex = (wordIndex + 1) % words.length
+				setTimeout(type, 500)
+				return
+			}
+		} else {
+			charIndex++
+			if (wordEl) {
+				wordEl.textContent = currentWord.text.substring(0, charIndex)
+				wordEl.style.color = currentWord.color
+			}
+			if (charIndex === currentWord.text.length) {
+				isDeleting = true
+				setTimeout(type, pauseBetweenWords)
+				return
+			}
+		}
+
+		setTimeout(type, isDeleting ? 50 : typingSpeed)
+	}
+
+	type()
+</script>
+
+<style>
+	.caret {
+		display: inline-block;
+		margin-left: 2px;
+		color: rgb(139, 139, 139);
+		animation: blink-caret 0.7s step-end infinite;
+	}
+
+	@keyframes blink-caret {
+		0%,
+		100% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+</style>

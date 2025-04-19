@@ -39,4 +39,13 @@
 
 	// Listen for prefers-color-scheme change
 	lightModePref.addEventListener('change', (e) => setTheme(e.matches ? 'light' : 'dark'))
+
+	// Listen for language-change custom event
+	document.addEventListener('language-change', (e) => {
+		const currentLanguage = e.detail.language
+		const languageLabel = document.getElementById('languageLabel')
+		if (languageLabel) {
+			languageLabel.textContent = currentLanguage === 'es' ? 'EN' : 'ES'
+		}
+	})
 </script>

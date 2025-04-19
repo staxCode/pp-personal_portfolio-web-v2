@@ -33,4 +33,6 @@ const post = defineCollection({
 		})
 })
 
-export const collections = { post }
+export const collections = { 
+	post 
+}

@@ -1,0 +1,166 @@
+---
+// src/components/MagicCard.astro
+// import logo from '@/assets/logo.png'
+import { Image } from 'astro:assets'
+const {
+	src,
+	// alt = '',
+	// title = '',
+	// description = '',
+	// color = '#7B5E57',
+	// stars = 3,
+	// badgeColor = '#FF0000'
+} = Astro.props
+---
+
+<div>
+	<Image
+		src={src}
+		alt='profile photo'
+		class='h-32 w-auto rounded-full bg-[#771a13]'
+		loading='eager'
+	/>
+</div>
+<!-- 
+	<div class='magic-card group'>
+		<div class='card-inner' style={`background-color: ${color}`}>
+			<div class='badge' style={`background-color: ${badgeColor}`}></div>
+			<div class='image-wrapper'>
+				<img src={src.src} alt={alt} class='card-image' loading='eager' />
+			</div>
+			{title && <h3 class='card-title'>{title}</h3>}
+			<div class='stars'>
+				{Array.from({ length: stars }).map(() => <span class='star'>★</span>)}
+			</div>
+			{description && <p class='card-description'>{description}</p>}
+		</div>
+		<div class='card-back'>
+			<Image
+				src={logo}
+				alt='profile photo'
+				class='h-20 w-auto p-2'
+				loading='eager'
+			/>
+		</div>
+	</div> 
+-->
+
+<style>
+	/* .magic-card {
+		width: 10rem;
+		perspective: 1000px;
+		cursor: pointer;
+		font-family: 'Press Start 2P', monospace;
+	}
+
+	.card-inner {
+		position: relative;
+		padding: 0.6rem;
+		border: 3px solid #1f1f1f;
+		border-radius: 0.5rem;
+		box-shadow: inset 0 0 0 2px #e0e0e0;
+		background-size: cover;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		transition:
+			transform 1s ease,
+			box-shadow 0.3s ease;
+		min-height: 12rem;
+		width: 100%;
+		backface-visibility: hidden;
+	}
+
+	
+	.magic-card:hover .card-inner {
+		transform: rotateY(360deg);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+	}
+
+	.badge {
+		position: absolute;
+		top: 0.3rem;
+		right: 0.3rem;
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 50%;
+		border: 2px solid #121212;
+		z-index: 1;
+	}
+
+	.image-wrapper {
+		width: 100%;
+		padding: 0.2rem;
+		border: 2px solid #000;
+		background: #333;
+		border-radius: 0.25rem;
+	}
+
+	.card-image {
+		width: 100%;
+		height: auto;
+		border-radius: 0.2rem;
+	}
+
+	.card-title {
+		margin-top: 0.5rem;
+		font-size: 0.7rem;
+		text-align: center;
+		color: #e0e0e0;
+		font-weight: bold;
+		text-shadow: 1px 1px 0 #000;
+		max-width: 100%;
+		word-wrap: break-word;
+	}
+
+	.stars {
+		display: flex;
+		justify-content: flex-start;
+		gap: 0.1rem;
+		font-size: 0.6rem;
+		margin-top: 0.2rem;
+		color: gold;
+		text-shadow: 1px 1px 0 #000;
+	}
+
+	.star {
+	}
+
+	.card-description {
+		margin-top: 0.5rem;
+		font-size: 0.55rem;
+		color: #e0e0e0;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 0.4rem 0.3rem;
+		border-radius: 0.25rem;
+		border-top: 1px dashed #888;
+		max-width: 100%;
+		word-wrap: break-word;
+	}
+
+	.card-back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #333;
+		border-radius: 0.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: transform 1s ease;
+		backface-visibility: hidden;
+	}
+
+	.back-symbol {
+		font-size: 2rem;
+		color: #e0e0e0;
+		font-weight: bold;
+	}
+	
+	.magic-card:hover .card-back {
+		transform: rotateY(180deg);
+	} */
+</style>

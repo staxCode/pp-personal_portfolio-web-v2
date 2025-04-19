@@ -7,6 +7,8 @@ import Header from '@/components/layout/Header.astro'
 import ThemeProvider from '@/components/ThemeProvider.astro'
 
 import { siteConfig } from '@/site-config'
+import { Image } from 'astro:assets'
+import backgroundImg from '@/assets/background.jpg' // o tu imagen real
 
 interface Props {
 	meta: SiteMeta
@@ -22,10 +24,18 @@ const {
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
 	</head>
 
-	<body class='flex justify-center bg-background'>
+	<body class='relative flex justify-center bg-background'>
 		<ThemeProvider />
+		<div class='absolute left-0 top-0 z-0 h-60 w-full bg-cover bg-center blur-sm'>
+			<Image
+				src={backgroundImg}
+				alt='background'
+				class='h-full w-full object-cover'
+				loading='eager'
+			/>
+		</div>
 		<main
-			class='flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 font-popins text-[0.92rem] leading-relaxed sm:px-10 lg:px-10'
+			class='font-poppins relative z-10 flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 text-[0.92rem] leading-relaxed sm:px-10 lg:px-10'
 		>
 			<Header />
 			<slot />

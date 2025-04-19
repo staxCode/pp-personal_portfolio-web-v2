@@ -7,8 +7,7 @@ import type { SiteMeta } from '@/types'
 import { siteConfig } from '@/site-config'
 
 type Props = SiteMeta
-
-const { articleDate, description, ogImage, title } = Astro.props
+const { articleDate, description, ogImage, title }: Props = Astro.props
 
 const titleSeparator = '•'
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`

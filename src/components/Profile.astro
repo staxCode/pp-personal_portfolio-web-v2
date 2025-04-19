@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets'
+const { src, alt } = Astro.props
+---
+
+<div class='relative w-full'>
+	<div class='group absolute bottom-[2rem] left-1/2 -translate-x-1/2 translate-y-1/2'>
+		<div
+			class='relative h-28 w-28 overflow-hidden rounded-full border-2 border-white bg-[#97241c] shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105'
+		>
+			<Image
+				src={src}
+				alt={alt}
+				class='h-full w-full object-cover opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-80'
+				loading='eager'
+			/>
+		</div>
+	</div>
+</div>

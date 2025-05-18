@@ -9,11 +9,12 @@ import expressiveCode from 'astro-expressive-code'
 import { expressiveCodeOptions } from './src/site.config'
 import icon from 'astro-icon'
 
-import vercel from '@astrojs/vercel/serverless'
+// import vercel from '@astrojs/vercel/serverless'
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.me',
+	site: 'https://staxcode-portfolio.netlify.app',
 	integrations: [
 		expressiveCode(expressiveCodeOptions),
 		tailwind({
@@ -42,7 +43,5 @@ export default defineConfig({
 	},
 	prefetch: true,
 	output: 'server',
-	adapter: vercel({
-		webAnalytics: { enabled: true }
-	})
+	adapter: netlify(),
 })

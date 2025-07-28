@@ -14,11 +14,14 @@ const { description } = Astro.props
 </div>
 
 <script>
+	const data = await fetch("./public/data/typingEffectData.json")
+	const _words =  await data.json();
 	const words = [
-		{ text: 'Frontend', color: '#7B68EE' }, // Amarillo
-		{ text: 'Backend', color: '#FF4500' }, // Verde
-		{ text: 'Fullstack', color: '#DC143C' }, // Rosa
-		{ text: 'IoT', color: '#FF8C00' } // Naranja oscuro
+		// { text: 'Frontend', color: '#7B68EE' }, // Amarillo
+		// { text: 'Backend', color: '#FF4500' }, // Verde
+		// { text: 'Fullstack', color: '#DC143C' }, // Rosa
+		// { text: 'IoT', color: '#FF8C00' }, // Naranja oscuro
+		..._words.areasIT,
 	]
 
 	let wordIndex = 0

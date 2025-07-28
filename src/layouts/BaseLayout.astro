@@ -26,16 +26,16 @@ const {
 
 	<body class='relative flex justify-center bg-background'>
 		<ThemeProvider />
-		<div class='absolute left-0 top-0 z-0 h-60 w-full bg-cover bg-center blur-sm'>
+		<div class='absolute left-0 top-0 z-0 h-60 w-full overflow-hidden'>
 			<Image
 				src={backgroundImg}
 				alt='background'
-				class='h-full w-full object-cover'
+				class='h-full w-full scale-110 object-cover blur-sm'
 				loading='eager'
 			/>
 		</div>
 		<main
-			class='font-poppins relative z-10 flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 text-[0.92rem] leading-relaxed sm:px-10 lg:px-10'
+			class='relative z-10 flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 font-poppins text-[0.92rem] leading-relaxed sm:px-10 lg:px-10'
 		>
 			<Header />
 			<slot />

@@ -1,0 +1,44 @@
+{
+    "areasIT": [
+        {
+            "text": "Frontend",
+            "color": "#FF6F61"
+        },
+        {
+            "text": "DevOps",
+            "color": "#4B8BBE"
+        },
+        {
+            "text": "Data Science",
+            "color": "#6A5ACD"
+        },
+        {
+            "text": "Game Development",
+            "color": "#8A2BE2"
+        },
+        {
+            "text": "Mobile Development",
+            "color": "#00BFA6"
+        },
+        {
+            "text": "Web Development",
+            "color": "#F39C12"
+        },
+        {
+            "text": "Cloud Computing",
+            "color": "#00AEEF"
+        },
+        {
+            "text": "Backend",
+            "color": "#FF4500"
+        },
+        {
+            "text": "Fullstack",
+            "color": "#16A085"
+        },
+        {
+            "text": "IoT",
+            "color": "#E67E22"
+        }
+    ]
+}

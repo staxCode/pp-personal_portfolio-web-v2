@@ -14,7 +14,7 @@ const { description } = Astro.props
 </div>
 
 <script>
-	const data = await fetch("./public/data/typingEffectData.json")
+	const data = await fetch("./data/typingEffectData.json")
 	const _words =  await data.json();
 	const words = [
 		// { text: 'Frontend', color: '#7B68EE' }, // Amarillo

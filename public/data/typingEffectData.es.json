@@ -1,0 +1,20 @@
+{
+    "areasIT": [
+        {
+            "text": "Frontend",
+            "color": "#FF6F61"
+        },
+        {
+            "text": "Desarrollo Web",
+            "color": "#F39C12"
+        },
+        {
+            "text": "Backend",
+            "color": "#FF4500"
+        },
+        {
+            "text": "Fullstack",
+            "color": "#16A085"
+        }
+    ]
+}

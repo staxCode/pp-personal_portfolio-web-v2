@@ -1,10 +1,10 @@
 {
 	"header": {
-		"title": "Hola, Soy Axcel",
-		"description": "Compilo ideas en",
+		"title": "Hi, I'm Axcel",
+		"description": "I compile ideas into",
 		"links": [
 			{
-				"name": "Lima, Perú",
+				"name": "Lima, Peru",
 				"url": null,
 				"meta-svg": "M12.003 11.73q.668 0 1.14-.475q.472-.475.472-1.143t-.475-1.14q-.476-.472-1.143-.472t-1.14.476q-.472.475-.472 1.143t.475 1.14q.476.472 1.143.472M12 19.677q2.82-2.454 4.458-4.991q1.638-2.538 1.638-4.39q0-2.744-1.737-4.53T12 3.981q-2.621 0-4.359 1.785t-1.737 4.53q0 1.852 1.638 4.39q1.639 2.537 4.458 4.99m0 1.343q-3.525-3.117-5.31-5.814q-1.786-2.697-1.786-4.909q0-3.173 2.066-5.234Q9.037 3 12 3t5.03 2.062q2.066 2.061 2.066 5.234q0 2.212-1.785 4.909q-1.786 2.697-5.311 5.814m0-10.904"
 			},
@@ -22,43 +22,43 @@
 	},
 	"sections": {
 		"about": {
-			"title": "Sobre mí",
-			"description": "Desarrollador Full Stack con más de 3 años de experiencia, especializado en crear soluciones escalables y robustas que optimizan operaciones y facilitan decisiones estratégicas. Apasionado por transformar desafíos en resultados funcionales y sostenibles."
+			"title": "About me",
+			"description": "Full Stack Developer with more than 3 years of experience, specialized in creating scalable and robust solutions that optimize operations and facilitate strategic decisions. Passionate about transforming challenges into functional and sustainable results."
 		},
 		"experience": {
-			"title": "Experiencia",
+			"title": "Experience",
 			"items": [
 				{
 					"company": "ACOMO Negocios Financieros SAC",
-					"position": "Desarrollador Junior en Fintech",
-					"duration": "Marzo 2023 - Noviembre 2023",
+					"position": "Junior Developer in Fintech",
+					"duration": "March 2023 - November 2023",
 					"description": "",
 					"activities": [
-						"Desarrollé soluciones tecnológicas para el ecosistema financiero, cubriendo todo el ciclo de vida del software.",
-						"Implementé funcionalidades críticas en backend con Node.js, Express.js y MongoDB, optimizando procesos para más de 100 usuarios.",
-						"Construí APIs RESTful escalables, automatizando procesos clave y reduciendo un 35% el tiempo de procesamiento."
+						"Developed technological solutions for the financial ecosystem, covering the entire software lifecycle.",
+						"Implemented critical functionalities in backend with Node.js, Express.js and MongoDB, optimizing processes for more than 100 users.",
+						"Built scalable RESTful APIs, automating key processes and reducing processing time by 35%."
 					]
 				}
 			]
 		},
 		"education": {
-			"title": "Educación",
+			"title": "Education",
 			"items": [
 				{
 					"institution": "Universidad Privada San Juan Bautista",
-					"degree": "Ingeniería de Computación y Sistemas",
-					"duration": "Marzo 2017 - Noviembre 2021"
+					"degree": "Computer Engineering and Systems",
+					"duration": "March 2017 - November 2021"
 				}
 			]
 		},
 		"proyects": {
-			"title": "Proyectos"
+			"title": "Projects"
 		},
 		"skills": {
-			"title": "Habilidades",
+			"title": "Skills",
 			"types": [
 				{
-					"name": "Lenguajes",
+					"name": "Languages",
 					"skills": [
 						"JavaScript",
 						"TypeScript"
@@ -127,7 +127,7 @@
 					]
 				},
 				{
-					"name": "Herramientas",
+					"name": "Tools",
 					"skills": [
 						"Git",
 						"GitHub",
@@ -147,6 +147,6 @@
 		}
 	},
 	"footer": {
-		"copyright": "© 2025 Staxcode. Todos los derechos reservados."
+		"copyright": "© 2025 Staxcode. All rights reserved."
 	}
 }

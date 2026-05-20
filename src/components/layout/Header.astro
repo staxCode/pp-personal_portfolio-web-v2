@@ -19,6 +19,12 @@ import logo from '@/assets/logo.png'
 
 		<div class='flex flex-row items-center justify-center gap-x-5 sm:gap-x-7'>
 			<button
+				id='toggleLanguage'
+				class='relative rounded-md border border-border p-1.5 text-sm font-semibold text-white transition-all hover:bg-border'
+			>
+				<span id='languageLabel' class='block'>EN</span>
+			</button>
+			<button
 				id='toggleDarkMode'
 				class='relative rounded-md border border-border p-1.5 text-white transition-all hover:bg-border'
 			>
@@ -53,6 +59,19 @@ import logo from '@/assets/logo.png'
 </header>
 
 <script>
+	// Language toggle
+	const toggleLanguageButton = document.getElementById('toggleLanguage')
+
+	toggleLanguageButton?.addEventListener('click', () => {
+		const currentLanguage = localStorage.getItem('language') || 'es'
+		const newLanguage = currentLanguage === 'es' ? 'en' : 'es'
+		const event = new CustomEvent('language-change', {
+			detail: { language: newLanguage }
+		})
+		document.dispatchEvent(event)
+	})
+
+	// Theme toggle
 	function getCurrentTheme() {
 		return localStorage.getItem('theme')
 	}

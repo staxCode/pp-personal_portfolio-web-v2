@@ -5,10 +5,14 @@ import BaseHead from '@/components/BaseHead.astro'
 import Footer from '@/components/layout/Footer.astro'
 import Header from '@/components/layout/Header.astro'
 import ThemeProvider from '@/components/ThemeProvider.astro'
+import LanguageProvider from '@/components/LanguageProvider.astro'
 
 import { siteConfig } from '@/site-config'
 import { Image } from 'astro:assets'
-import backgroundImg from '@/assets/background.jpg' // o tu imagen real
+import backgroundImg from '@/assets/background.jpg'
+
+import portfolioES from '@/data/portfolio.json'
+import portfolioEN from '@/data/portfolio.en.json'
 
 interface Props {
 	meta: SiteMeta
@@ -17,6 +21,8 @@ interface Props {
 const {
 	meta: { articleDate, description = siteConfig.description, ogImage, title }
 } = Astro.props
+
+const i18nData = JSON.stringify({ es: portfolioES, en: portfolioEN })
 ---
 
 <html lang={siteConfig.lang} class=''>
@@ -25,7 +31,9 @@ const {
 	</head>
 
 	<body class='relative flex justify-center bg-background'>
+		<script is:inline type='application/json' id='i18n-data' set:html={i18nData} />
 		<ThemeProvider />
+		<LanguageProvider />
 		<div class='absolute left-0 top-0 z-0 h-60 w-full overflow-hidden'>
 			<Image
 				src={backgroundImg}
@@ -35,7 +43,8 @@ const {
 			/>
 		</div>
 		<main
-			class='relative z-10 flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 font-poppins text-[0.92rem] leading-relaxed sm:px-10 lg:px-10'
+			id='page-content'
+			class='relative z-10 flex min-h-screen w-screen max-w-[60rem] flex-col items-center px-6 pb-10 pt-7 font-poppins text-[0.92rem] leading-relaxed animate-fade-in transition-layer sm:px-10 lg:px-10'
 		>
 			<Header />
 			<slot />

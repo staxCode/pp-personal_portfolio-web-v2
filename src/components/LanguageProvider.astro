@@ -1,0 +1,84 @@
+<script is:inline>
+	function getCurrentLanguage() {
+		return localStorage.getItem('language') || 'es'
+	}
+
+	function setLanguage(lang, animated = false) {
+		if (lang !== 'es' && lang !== 'en') return
+
+		if (animated) {
+			const page = document.getElementById('page-content')
+			page?.classList.add('is-switching')
+			setTimeout(() => {
+				applyLanguage(lang)
+				page?.classList.remove('is-switching')
+			}, 400)
+		} else {
+			applyLanguage(lang)
+		}
+	}
+
+	function applyLanguage(lang) {
+		localStorage.setItem('language', lang)
+
+		const root = document.documentElement
+		root.setAttribute('lang', lang === 'en' ? 'en-GB' : 'es-ES')
+
+		const label = document.getElementById('languageLabel')
+		if (label) {
+			label.textContent = lang === 'es' ? 'EN' : 'ES'
+		}
+
+		applyTranslations(lang)
+	}
+
+	function getNestedValue(obj, path) {
+		return path.split('.').reduce((current, key) => current?.[key], obj)
+	}
+
+	function applyTranslations(lang) {
+		const i18nDataEl = document.getElementById('i18n-data')
+		if (!i18nDataEl) return
+
+		const translations = JSON.parse(i18nDataEl.textContent || '{}')
+		const langData = translations[lang]
+		if (!langData) return
+
+		const elements = document.querySelectorAll('[data-i18n]')
+		elements.forEach((el) => {
+			const key = el.getAttribute('data-i18n')
+			const translation = getNestedValue(langData, key)
+			if (translation) {
+				if (el.getAttribute('data-i18n-type') === 'html') {
+					el.innerHTML = translation
+				} else {
+					el.textContent = translation
+				}
+			}
+		})
+
+		const headingEls = document.querySelectorAll('[data-i18n-project-heading]')
+		headingEls.forEach((el) => {
+			const text = el.getAttribute(`data-i18n-project-heading-${lang}`)
+			if (text) el.textContent = text
+		})
+
+		const descEls = document.querySelectorAll('[data-i18n-project-desc]')
+		descEls.forEach((el) => {
+			const text = el.getAttribute(`data-i18n-project-desc-${lang}`)
+			if (text) el.textContent = text
+		})
+	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		setLanguage(getCurrentLanguage(), false)
+	})
+
+	document.addEventListener('astro:after-swap', () => {
+		setLanguage(getCurrentLanguage(), false)
+	})
+
+	document.addEventListener('language-change', (e) => {
+		setLanguage(e.detail.language, true)
+	})
+</script>

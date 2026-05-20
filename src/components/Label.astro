@@ -1,7 +1,7 @@
 ---
 import { cn } from '@/utils'
 
-const { class: className, as: Tag = 'div', title, href, ...props } = Astro.props
+const { class: className, as: Tag = 'div', title, href, i18nKey, ...props } = Astro.props
 ---
 
 <Tag
@@ -14,5 +14,5 @@ const { class: className, as: Tag = 'div', title, href, ...props } = Astro.props
 	{...props}
 >
 	<slot name='icon' />
-	<p>{title}</p>
+	<p {...(i18nKey && { 'data-i18n': i18nKey })}>{title}</p>
 </Tag>

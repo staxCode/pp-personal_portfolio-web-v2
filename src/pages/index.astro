@@ -19,13 +19,13 @@ const { data, error } = await supabase.from('projects').select('*')
 		<section class='flex flex-col items-center gap-y-7'>
 			<Profile src={imgProfile} alt='profile photo' />
 			<div class='mt-4 flex flex-col items-center gap-y-4'>
-				<h1 class='text-3xl font-bold'>{header.title}</h1>
-				<TypingEffect description={header.description} />
+				<h1 class='text-3xl font-bold' data-i18n='header.title'>{header.title}</h1>
+				<TypingEffect description={header.description} i18nKey='header.description' />
 				<div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
 					{
 						header.links.length > 0 &&
-							header.links.map((link) => (
-								<Label title={link.name} as='a' href={link.url} target='_blank'>
+							header.links.map((link, i) => (
+								<Label title={link.name} as='a' href={link.url} target='_blank' i18nKey={i === 0 ? 'header.links.0.name' : undefined}>
 									<svg
 										xmlns='http://www.w3.org/2000/svg'
 										viewBox='0 0 22 22'
@@ -43,27 +43,30 @@ const { data, error } = await supabase.from('projects').select('*')
 
 		{
 			sections.about && (
-				<Section title={sections.about.title}>
-					<p class='text-muted-foreground'>{sections.about.description}</p>
+				<Section title={sections.about.title} i18nKey='sections.about.title'>
+					<p class='text-muted-foreground' data-i18n='sections.about.description'>{sections.about.description}</p>
 				</Section>
 			)
 		}
 
 		{
 			sections.experience && (
-				<Section title={sections.experience.title}>
-					{sections.experience.items.map((exp) => (
+				<Section title={sections.experience.title} i18nKey='sections.experience.title'>
+					{sections.experience.items.map((exp, i) => (
 						<Card
 							heading={exp.company}
+							headingI18nKey={`sections.experience.items.${i}.company`}
 							subheading={exp.position}
+							subheadingI18nKey={`sections.experience.items.${i}.position`}
 							date={exp.duration}
+							dateI18nKey={`sections.experience.items.${i}.duration`}
 							imagePath=''
 							altText={sections.experience.title}
 							imageClass='h-12 w-auto md:-left-16'
 						>
 							<ul class='ml-4 list-disc text-muted-foreground'>
-								{exp.activities.map((activity) => (
-									<li>{activity}</li>
+								{exp.activities.map((activity, j) => (
+									<li data-i18n={`sections.experience.items.${i}.activities.${j}`}>{activity}</li>
 								))}
 							</ul>
 						</Card>
@@ -74,16 +77,19 @@ const { data, error } = await supabase.from('projects').select('*')
 
 		{
 			!error && data.length > 0 && (
-				<Section title={sections.proyects.title}>
+				<Section title={sections.proyects.title} i18nKey='sections.proyects.title'>
 					<div class='flex flex-col flex-wrap-reverse gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
-						{data.map((p) => (
+						{data.map((p, i) => (
 							<ProjectCard
 								heading={p.title_spanish}
+								headingEn={p.title_english || p.title_spanish}
 								subheading={p.description_spanish}
+								subheadingEn={p.description_english || p.description_spanish}
 								imagePath={p.image_url}
 								altText={p.name}
 								class='mt-3 w-auto flex-none sm:w-64 sm:flex-auto'
 								href={p.demo_url}
+								projectIndex={i}
 							/>
 						))}
 					</div>
@@ -92,12 +98,15 @@ const { data, error } = await supabase.from('projects').select('*')
 		}
 		{
 			sections.education && (
-				<Section title={sections.education.title}>
-					{sections.education.items.map((edu) => (
+				<Section title={sections.education.title} i18nKey='sections.education.title'>
+					{sections.education.items.map((edu, i) => (
 						<Card
 							heading={edu.institution}
+							headingI18nKey={`sections.education.items.${i}.institution`}
 							subheading={edu.degree}
+							subheadingI18nKey={`sections.education.items.${i}.degree`}
 							date={edu.duration}
+							dateI18nKey={`sections.education.items.${i}.duration`}
 							imagePath=''
 							altText={sections.education.title}
 							imageClass='h-12 w-auto md:-left-16'
@@ -108,9 +117,9 @@ const { data, error } = await supabase.from('projects').select('*')
 		}
 		{
 			sections.skills && (
-				<Section title={sections.skills.title}>
-					{sections.skills.types.map((skill) => (
-						<SkillLayout title={skill.name} skills={skill.skills} />
+				<Section title={sections.skills.title} i18nKey='sections.skills.title'>
+					{sections.skills.types.map((skill, i) => (
+						<SkillLayout title={skill.name} i18nKey={`sections.skills.types.${i}.name`} skills={skill.skills} />
 					))}
 				</Section>
 			)

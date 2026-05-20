@@ -1,11 +1,11 @@
 ---
-const { description } = Astro.props
+const { description, i18nKey } = Astro.props
 ---
 
 <div class='flex flex-col items-center'>
 	<div class='intro-container'>
 		<h1 class='text-2xl'>
-			{description}
+			<span {...(i18nKey && { 'data-i18n': i18nKey })}>{description}</span>
 			<span class='ml-1 font-bold'>
 				<span id='animated-word'></span><span class='caret'>|</span>
 			</span>
@@ -14,15 +14,18 @@ const { description } = Astro.props
 </div>
 
 <script>
-	const data = await fetch("./data/typingEffectData.es.json")
-	const _words =  await data.json();
-	const words = [
-		// { text: 'Frontend', color: '#7B68EE' }, // Amarillo
-		// { text: 'Backend', color: '#FF4500' }, // Verde
-		// { text: 'Fullstack', color: '#DC143C' }, // Rosa
-		// { text: 'IoT', color: '#FF8C00' }, // Naranja oscuro
-		..._words.areasIT,
-	]
+	let typingWords: Array<{text: string, color: string}> = []
+
+	async function loadTypingWords(lang: string): Promise<void> {
+		const file = lang === 'en' ? './data/typingEffectData.en.json' : './data/typingEffectData.es.json'
+		try {
+			const data = await fetch(file)
+			const _words = await data.json()
+			typingWords = _words.areasIT
+		} catch {
+			typingWords = []
+		}
+	}
 
 	let wordIndex = 0
 	let charIndex = 0
@@ -31,9 +34,20 @@ const { description } = Astro.props
 	const wordEl = document.getElementById('animated-word')
 	const typingSpeed = 100
 	const pauseBetweenWords = 1500
+	let typingTimeout: ReturnType<typeof setTimeout> | null = null
+
+	function resetTyping() {
+		wordIndex = 0
+		charIndex = 0
+		isDeleting = false
+		if (typingTimeout) clearTimeout(typingTimeout)
+		if (wordEl) wordEl.textContent = ''
+	}
 
 	function type() {
-		const currentWord = words[wordIndex]
+		if (typingWords.length === 0) return
+
+		const currentWord = typingWords[wordIndex]
 
 		if (isDeleting) {
 			charIndex--
@@ -42,8 +56,8 @@ const { description } = Astro.props
 			}
 			if (charIndex === 0) {
 				isDeleting = false
-				wordIndex = (wordIndex + 1) % words.length
-				setTimeout(type, 500)
+				wordIndex = (wordIndex + 1) % typingWords.length
+				typingTimeout = setTimeout(type, 500)
 				return
 			}
 		} else {
@@ -54,15 +68,26 @@ const { description } = Astro.props
 			}
 			if (charIndex === currentWord.text.length) {
 				isDeleting = true
-				setTimeout(type, pauseBetweenWords)
+				typingTimeout = setTimeout(type, pauseBetweenWords)
 				return
 			}
 		}
 
-		setTimeout(type, isDeleting ? 50 : typingSpeed)
+		typingTimeout = setTimeout(type, isDeleting ? 50 : typingSpeed)
 	}
 
-	type()
+	async function startTyping(lang: string): Promise<void> {
+		resetTyping()
+		await loadTypingWords(lang)
+		type()
+	}
+
+	const currentLang = localStorage.getItem('language') || 'es'
+	startTyping(currentLang)
+
+	document.addEventListener('language-change', (e: Event) => {
+		startTyping((e as CustomEvent).detail.language)
+	})
 </script>
 
 <style>

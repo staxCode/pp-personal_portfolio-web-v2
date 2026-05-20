@@ -41,6 +41,6 @@ export default defineConfig({
 		}
 	},
 	prefetch: true,
-	output: 'server',
+	output: 'static',
 	adapter: netlify(),
 })

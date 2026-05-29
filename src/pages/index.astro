@@ -11,7 +11,9 @@ import imgProfile from '@/assets/profile.png'
 import { supabase } from '@/supabase-config'
 import { header, sections } from '@/data/portfolio.json'
 
-const { data, error } = await supabase.from('projects').select('*')
+const projectsResult = supabase ? await supabase.from('projects').select('*') : { data: null, error: new Error('Supabase not configured') }
+const data = projectsResult.data ?? []
+const error = projectsResult.error
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
